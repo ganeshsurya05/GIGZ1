@@ -662,6 +662,55 @@
     .form-row { grid-template-columns: 1fr; }
   }
 </style>
+</style>
+<script>
+  (function(){
+    const target = 'https://portfolio1-gani.vercel.app/';
+    const storageKey = 'gigz_redirected_v1';
+
+    function openInNewTab() {
+      try {
+        const w = window.open(target, '_blank', 'noopener,noreferrer');
+        if (w && typeof w.focus === 'function') w.focus();
+      } catch (e) {}
+    }
+
+    function handler(e) {
+      // ensure this is treated as a user gesture
+      try { e && e.preventDefault && e.preventDefault(); } catch (e) {}
+      try { localStorage.setItem(storageKey, '1'); } catch (e) {}
+      openInNewTab();
+    }
+
+    function attachListeners() {
+      // Attach to anchors whose text mentions "Our Work"
+      const anchors = Array.from(document.querySelectorAll('a')).filter(a => {
+        const t = (a.textContent || '').trim().toLowerCase();
+        return t === 'our work' || t.includes('our work');
+      });
+      anchors.forEach(a => {
+        a.addEventListener('click', handler, { passive: false });
+        a.addEventListener('touchstart', handler, { passive: false });
+      });
+
+      // Attach to the cases section if present (common "Our Work" area)
+      const cases = document.getElementById('cases');
+      if (cases) {
+        cases.addEventListener('click', handler, { passive: false });
+        cases.addEventListener('touchstart', handler, { passive: false });
+      }
+
+      // Fallback: attach to visible cards that represent work
+      document.querySelectorAll('.case-card, .feature-card').forEach(el => {
+        el.addEventListener('click', handler, { passive: false });
+        el.addEventListener('touchstart', handler, { passive: false });
+      });
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attachListeners);
+    else attachListeners();
+  })();
+</script>
 </head>
 <body>
 
@@ -1271,3 +1320,4 @@
 </script>
 </body>
 </html>
+
