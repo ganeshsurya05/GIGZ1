@@ -647,19 +647,142 @@
   .particle { position: absolute; border-radius: 50%; animation: particleFloat linear infinite; }
   @keyframes particleFloat { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100px) rotate(720deg); opacity: 0; } }
 
-  /* RESPONSIVE */
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; margin-left: 8px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+  @media (max-width: 640px) {
+    .nav-hamburger { display: flex; }
+    .nav-ctas .btn-ghost { display: none; }
+  }
+
+  /* MOBILE MENU */
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(10,10,18,0.97); backdrop-filter: blur(20px); padding: 80px 6% 40px; flex-direction: column; overflow-y: auto; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 8px; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .mobile-menu ul li a { display: block; color: white; text-decoration: none; font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); letter-spacing: -0.3px; transition: color 0.2s; }
+  .mobile-menu ul li a:hover { color: var(--green-light); }
+  ============================================= */
   @media (max-width: 900px) {
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    section { padding: 80px 5%; }
+    .hero { padding: 100px 5% 80px; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .cases-grid { grid-template-columns: 1fr; gap: 20px; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 500px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 13px; }
+    .contact-form-card { padding: 40px 32px; }
   }
+
+  /* =============================================
+     RESPONSIVE — MOBILE (max 640px)
+  ============================================= */
   @media (max-width: 640px) {
-    .footer-grid { grid-template-columns: 1fr; }
-    nav { padding: 0 4%; }
+    /* NAV */
+    nav { padding: 0 4%; height: 60px; }
     .nav-links { display: none; }
+    .nav-ctas .btn-ghost { display: none; }
+    .btn-primary { padding: 8px 16px; font-size: 13px; }
+    .nav-logo { font-size: 22px; }
+
+    /* HERO */
+    .hero { padding: 90px 5% 70px; min-height: 90vh; }
+    .hero h1 { font-size: clamp(28px, 8vw, 44px); letter-spacing: -0.5px; margin-bottom: 16px; }
+    .hero-tagline { font-size: 14px; margin-bottom: 12px; }
+    .hero-sub { font-size: 15px; margin-bottom: 32px; }
+    .hero-ctas { flex-direction: column; gap: 12px; align-items: stretch; }
+    .btn-hero-primary, .btn-hero-purple { padding: 14px 24px; font-size: 15px; text-align: center; border-radius: 10px; }
+    .scroll-hint { display: none; }
+
+    /* SECTIONS */
+    section { padding: 64px 4%; }
+    .section-title { font-size: clamp(22px, 6vw, 34px); }
+    .section-sub { font-size: 15px; }
+
+    /* FEATURES */
+    .features-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 40px; }
+    .feature-card { padding: 26px 22px; border-radius: 16px; }
+    .feature-icon { width: 44px; height: 44px; font-size: 20px; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 17px; }
+    .feature-card p { font-size: 14px; }
+
+    /* HOW IT WORKS */
+    .steps-grid { grid-template-columns: 1fr; gap: 36px; margin-top: 48px; }
     .steps-connector { display: none; }
+    .step-num { width: 64px; height: 64px; font-size: 18px; }
+    .step h3 { font-size: 16px; }
+    .step p { font-size: 13px; }
+
+    /* SERVICES */
+    .services-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+    .service-card { padding: 28px 24px; border-radius: 16px; min-height: auto; }
+    .service-card h3 { font-size: 18px; }
+    .service-card .sc-desc { font-size: 13px; }
+    .sc-includes li { font-size: 12px; }
+    .sc-link { font-size: 13px; padding: 8px 14px; }
+
+    /* CASES */
+    .cases-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+    .case-card { padding: 24px 20px; border-radius: 16px; }
+    .case-quote { font-size: 14px; padding-left: 10px; }
+    .case-tag { font-size: 11px; padding: 3px 9px; }
+
+    /* TEAM */
+    .team { padding: 64px 4%; }
+    .team-card-name { font-size: 17px; }
+    .team-slider-btn { width: 38px; height: 38px; font-size: 15px; }
+
+    /* PRICING */
+    .pricing-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; max-width: 100%; }
+    .price-card { padding: 28px 24px; border-radius: 18px; }
     .price-card-featured { transform: none; }
     .price-card-featured:hover { transform: translateY(-6px); }
-    .contact-form-card { padding: 36px 24px; }
-    .form-row { grid-template-columns: 1fr; }
+    .price-range { font-size: 26px; }
+    .price-features li { font-size: 13px; }
+    .btn-plan { padding: 12px; font-size: 14px; }
+
+    /* CTA */
+    .cta-section { padding: 72px 5%; }
+    .cta-section h2 { font-size: clamp(22px, 7vw, 36px); margin-bottom: 14px; }
+    .cta-section p { font-size: 15px; margin-bottom: 28px; }
+    .cta-btns { flex-direction: column; gap: 12px; align-items: stretch; }
+    .btn-cta-white, .btn-cta-green { padding: 14px 24px; font-size: 15px; text-align: center; }
+
+    /* CONTACT */
+    .contact-section { padding: 64px 4%; }
+    .contact-form-card { padding: 28px 18px; border-radius: 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 14px; }
+    .contact-form input, .contact-form select, .contact-form textarea { padding: 12px 14px; font-size: 14px; }
+    .submit-btn-contact { padding: 14px 24px; font-size: 15px; }
+
+    /* FOOTER */
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 36px; }
+    footer { padding: 56px 5% 28px; }
+    .footer-logo-text { font-size: 24px; }
+    .footer-brand p { font-size: 13px; max-width: 100%; }
+    .footer-col h4 { font-size: 11px; margin-bottom: 14px; }
+    .footer-col ul { gap: 10px; }
+    .footer-col ul li a { font-size: 13px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 20px; }
+    .footer-bottom p { font-size: 12px; }
+    .social-btn { width: 34px; height: 34px; font-size: 12px; }
+  }
+
+  /* =============================================
+     RESPONSIVE — SMALL MOBILE (max 400px)
+  ============================================= */
+  @media (max-width: 400px) {
+    .hero h1 { font-size: clamp(24px, 7.5vw, 32px); }
+    .hero-ctas { gap: 10px; }
+    .btn-hero-primary, .btn-hero-purple { padding: 12px 20px; font-size: 14px; }
+    .feature-card { padding: 20px 16px; }
+    .service-card { padding: 22px 18px; }
+    .contact-form-card { padding: 22px 14px; }
+    .price-card { padding: 22px 18px; }
+    section { padding: 56px 4%; }
   }
 </style>
 </style>
@@ -690,8 +813,29 @@
   <div class="nav-ctas">
     <a href="#contact-us" class="btn-ghost">Talk to Us</a>
     <a href="#pricing" class="btn-primary">Get Started</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+  <ul>
+    <li><a href="#features" onclick="closeMobileMenu()">Why GIGZ</a></li>
+    <li><a href="#how" onclick="closeMobileMenu()">How It Works</a></li>
+    <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+    <li><a href="#cases" onclick="closeMobileMenu()">Results</a></li>
+    <li><a href="#team" onclick="closeMobileMenu()">Team</a></li>
+    <li><a href="#pricing" onclick="closeMobileMenu()">Pricing</a></li>
+    <li><a href="#contact-us" onclick="closeMobileMenu()">Contact</a></li>
+  </ul>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px;">
+    <a href="#contact-us" class="btn-ghost" onclick="closeMobileMenu()" style="text-align:center;padding:12px 20px;font-size:15px;">Talk to Us</a>
+    <a href="#pricing" class="btn-primary" onclick="closeMobileMenu()" style="text-align:center;padding:12px 20px;font-size:15px;">Get Started</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -785,7 +929,7 @@
   <div class="services-grid" style="margin-top:64px;">
     <div class="service-card sc-purple reveal delay-1">
       <div><span class="service-card-icon">🌐</span><h3>GIGZ Web</h3><p class="sc-desc">Modern website design and development tailored to your brand.</p><ul class="sc-includes"><li>Business websites</li><li>Landing pages</li><li>UI/UX design</li><li>Performance optimization</li></ul></div>
-      <a href="https://portfolio1-gani.vercel.app/" target="_blank" rel="noopener noreferrer" class="sc-link sc-link-white">Explore GIGZ Web →</a>
+      <a href="https://portfolio1-gani.vercel.app/" target="_blank" rel="noopener noreferrer" class="sc-link sc-link-white" style="position:relative;z-index:20;" onclick="window.open('https://portfolio1-gani.vercel.app/','_blank','noopener,noreferrer');return false;">Explore GIGZ Web →</a>
     </div>
     <div class="service-card sc-green reveal delay-2">
       <div><span class="service-card-icon">📢</span><h3>GIGZ Marketing</h3><p class="sc-desc">Grow your business with powerful digital marketing strategies.</p><ul class="sc-includes"><li>Meta Ads (Facebook & Instagram)</li><li>Social media marketing</li><li>Campaign strategy</li><li>Lead generation</li></ul></div>
@@ -1011,7 +1155,7 @@
       </div>
       <p>The all-in-one digital growth platform for modern businesses — from website to marketing to scale.</p>
     </div>
-    <div class="footer-col"><h4>Services</h4><ul><li><a href="#">GIGZ Web</a></li><li><a href="#">GIGZ Marketing</a></li><li><a href="#">GIGZ Creatives</a></li><li><a href="#">GIGZ Insights</a></li><li><a href="#">GIGZ Support</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="https://portfolio1-gani.vercel.app/" target="_blank" rel="noopener noreferrer">GIGZ Web</a></li><li><a href="#">GIGZ Marketing</a></li><li><a href="#">GIGZ Creatives</a></li><li><a href="#">GIGZ Insights</a></li><li><a href="#">GIGZ Support</a></li></ul></div>
     <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Our Work</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
     <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
   </div>
@@ -1057,6 +1201,15 @@
     p.style.cssText = `width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}%;bottom:-10px;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*8}s;`;
     particlesEl.appendChild(p);
   }
+
+  // ============ HAMBURGER MENU ============
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileMenuClose');
+  function openMobileMenu() { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+  if (hamburger) hamburger.addEventListener('click', openMobileMenu);
+  if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
 
   // ============ TEAM SLIDER ============
   (function() {
